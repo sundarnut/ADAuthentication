@@ -13,7 +13,7 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Server Roles: Select Web Server (IIS)
 * A new box pops out. Add Roles and Features Wizard: Web Server (IIS) - Management Tools - [Tools] IIS Management Console. You are suggested to include this installation.
 * Verify that the "Include Management Tools (if applicable)" checkbox is checked. Select "Add Features"
-* Click Next &gt; to start the installation and configuration
+* Click Next > to start the installation and configuration
 * The Features options opens out with the Select Features header.
 * Expand the .NET Framework 4.5 Features (2 of 7 installed) option in the list shown
 * Check and select ASP.NET 4.5 shown in this list.
@@ -21,7 +21,7 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Select HTTP Activation
 * The Add Roles and Features Wizard pops out once again, informing that a lot of additional features need to be included to enable HTTP Activation, like ISAPI Extension, Filters and .NET Extensibility 4.5. Click "Add Features"
 * Click Next in the main window.
-* The Web Server Role (IIS) option explains how Role Services work. Press Next &gt;
+* The Web Server Role (IIS) option explains how Role Services work. Press Next >
 * In the Role Services (Select role services) option list, select HTTP Redirection under Web Server, select Windows Authentication under Security, click Next.
 * In the final Confirm installation selections screen, all your options are displayed. Check and select the option on top that states, Restart the destination server automatically if required.
 * A confirmation box pops out to confirm this selection. Choose Yes.
@@ -30,7 +30,7 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * You get a notification on the Feature Installation with an installation succeeded message. Click on Close on this window.
 * Type http://localhost/ and verify that the default IIS page opens out.
 
-# Install Microsoft Visual Studio 2015 Community Edition with all the default components, restart after the operation finishes.
+Install Microsoft Visual Studio 2015 Community Edition with all the default components, restart after the operation finishes.
 
 # Creating the project
 
@@ -38,7 +38,7 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Create a folder: C:\services\ADAuth
 * Launch Visual Studio Community 2015
 * Click on New Project...
-* The New Project box that opens out, on the left pane - expand Templates &gt; Visual C# &gt; Windows &gt; Web, and choose ASP.NET Web Application
+* The New Project box that opens out, on the left pane - expand Templates > Visual C# > Windows > Web, and choose ASP.NET Web Application
 * The Name of the Application: ADAuth
 * Location: C:\services\ADAuth
 * Uncheck the Create directory for solution check-box
@@ -50,12 +50,12 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Leave all the other options unchecked.
 * Click on OK
 * Microsoft Visual Studio creates the ADAuth project and presents you with an empty Developer Environment Window.
-* Right click on the ADAuth project under the ADAuth Solution in the right Solution Explorer pane, and choose Add &gt; New Item
-* In the New Item popup applet window, verify that you are presented with Installed &gt; Visual C# &gt; Web, and choose Web Form, the fourth option from the top
+* Right click on the ADAuth project under the ADAuth Solution in the right Solution Explorer pane, and choose Add > New Item
+* In the New Item popup applet window, verify that you are presented with Installed > Visual C# > Web, and choose Web Form, the fourth option from the top
 * Name your new page Default.aspx
 * Click on Add.
 * Visual Studio creates a barebones page and presents that to you.
-* Inside the &lt;div&gt;&lt;/div&gt; section on line 12, enter the text: &lt;h1&gt;hello,world&lt;/h1&gt;
+* Inside the <div></div> section on line 12, enter the text: &lt;h1&gt;hello,world&lt;/h1&gt;
 * Save the page.
 * Build the solution by selecting Build from the top menu, and clicking on the option Build Solution.
 * Verify that everything builds perfectly.
@@ -63,7 +63,7 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Your default web browser opens out with a page that has a URL that may be similar to http://localhost:60890/Default.aspx except for the random free TCP port chosen on your Windows instance.
 * This should display the string hello,world in bold, as a headline.
 
-# Now let's configure this page to be served over HTTPS via a self-signed certificate and the default website.
+Now let's configure this page to be served over HTTPS via a self-signed certificate and the default website.
 
 * Bring up IIS Manager by pressing Windows Key-R, and entering inetmgr
 * IIS Manager opens out and it may present you with a dialog that states, "Do you want to get started with Microsoft Web Platform to stay connected with the latest Web Platform Components?", choose No for now. Do not click on the "Do not show this message." option, we will consider this at a later point in time.
@@ -76,7 +76,7 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Click on OK in the Folder Selection dialog.
 * Click on OK in the Edit Site dialog.
 * Now, navigate back to your default browser. Hitting http://localhost/Default.aspx should open out your page with the hello,world message.
-* Go back to Visual Studio and select Debug &gt; Stop Debugging. We don't need to use the debugger anymore.
+* Go back to Visual Studio and select Debug > Stop Debugging. We don't need to use the debugger anymore.
 
 # Next step is to secure our website over HTTPS, so it does not accept or serve anything plaintext.
 
@@ -85,7 +85,7 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Let's assume you have an account named serviceaccount01 in your Active Directory GAL with a password that isn't public knowledge.
 * First off, we will add this user to the Local User Group called IIS_IUSRS.
 * Click on the Start button on your taskbar, choose Control Panel and choose Administrative Tools.
-* Choose Computer Management in the set of options displayed for Control Panel &gt; All Control Panel Items &gt; Administrative Tools
+* Choose Computer Management in the set of options displayed for Control Panel > All Control Panel Items > Administrative Tools
 * The Computer Management section that opens out has a left pane with a set of options listed under System Tools
 * Choose Local Users and Groups and expand this node. You should see a folder for groups
 * List out all the groups that are defined on this computer. You should see one for IIS_IUSRS
@@ -120,6 +120,12 @@ Simple HTTPS Web Service to authenticate users against the AD via post - usage: 
 * Click on OK to dismiss this dialog.
 * Now the site bindings lists two separate means to access your default website, port 80 and port 443. Delete the binding for port 80. We should not have this content accessible over plaintext
 * Click on Close to dismiss this window.
+* From the right Actions pane, click Basic Settings to open the Edit Site dialog
+* Click on Select button on the top right, next to the default App Pool
+* The Select Application Pool dialog opens out.
+* Select the new AppPool we just created, named serviceaccount01_Pool.
+* Click on OK in the Select Application Pool Catalog.
+* Click on OK in the Edit Site dialog.
 * Now, navigating to https://localhost/Default.aspx will present you with a warning window, complaining about a self-signed certificate whose authenticity cannot be verified.
 * Google Chrome shows up with "Your connection is not private". Click on the ADVANCED link at the bottom and choose Proceed to localhost (unsafe).
 * The same hello,world page opens out with content served over HTTPS. http://localhost/Default.aspx will no longer work.
@@ -141,7 +147,7 @@ with
 &lt;/compilation&gt;
 
 * Save the file.
-* Right click on References under the ASP.NET Project ADAuth in the Solution Explorer to open the Reference Manager - ADAuth window. Navigate to Assemblies &gt; Framework in the left pane, and select System.DirectoryServices and System.DirectoryServices.AccountManagement in this list.
+* Right click on References under the ASP.NET Project ADAuth in the Solution Explorer to open the Reference Manager - ADAuth window. Navigate to Assemblies > Framework in the left pane, and select System.DirectoryServices and System.DirectoryServices.AccountManagement in this list.
 
 * Copy over the contents of file https://github.com/sundarnut/ADAuthentication/blob/master/Default.aspx over to your Default.aspx
 * Replace $$YOUR_EMAIL_DOMAIN$$ with @yourcompany.com, $$YOUR_AD_DOMAIN$$ with acme.acmecompany.org (your AD namespace), $$YOUR_DOMAIN$$ with acme (if people login as acme\johndoe) across this file.
