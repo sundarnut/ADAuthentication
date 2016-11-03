@@ -39,8 +39,8 @@ Install Microsoft Visual Studio 2015 Community Edition with all the default comp
 * Launch Visual Studio Community 2015
 * Click on New Project...
 * The New Project box that opens out, on the left pane - expand Templates > Visual C# > Windows > Web, and choose ASP.NET Web Application
-* The Name of the Application: ADAuth
-* Location: C:\services\ADAuth
+* The Name of the Application: ADAuthentication
+* Location: C:\services\ADAuthentication
 * Uncheck the Create directory for solution check-box
 * Verify that the Add to Source Control box is unchecked for now
 * Also uncheck the Add Application Insights to Project option on the right pane. We will ignore this for now.
@@ -71,8 +71,8 @@ Now let's configure this page to be served over HTTPS via a self-signed certific
 * Expand the Sites node of the tree, that lists Default Web Site.
 * Click on the Default Web Site.
 * From the right Actions pane, click Basic Settings to open the Edit Site dialog
-* The Physical Path is set by default to %systemdrive%\inetpub\wwwroot. We need to change this to point to our ADAuth app on this box.
-* Click on the button with the three dots next to it. This should give you the Folder Selection dialog. Choose c:\services\ADAuth\ADAuth in it.
+* The Physical Path is set by default to %systemdrive%\inetpub\wwwroot. We need to change this to point to our ADAuthentication app on this box.
+* Click on the button with the three dots next to it. This should give you the Folder Selection dialog. Choose c:\services\ADAuthentication\ADAuthentication in it.
 * Click on OK in the Folder Selection dialog.
 * Click on OK in the Edit Site dialog.
 * Now, navigate back to your default browser. Hitting http://localhost/Default.aspx should open out your page with the hello,world message.
@@ -81,6 +81,7 @@ Now let's configure this page to be served over HTTPS via a self-signed certific
 # Next step is to secure our website over HTTPS, so it does not accept or serve anything plaintext.
 
 * We will also use an Application Pool that is configured to run as a user with a service account in the Active Directory. This should not be a regular user with a password that changes every few weeks (4 or 12). We need a service account in the AD, that usually has a fairly complex password that doesn't expire.
+* Please procure or obtain the credentials of a service account (login and password) in your AD. This could be named serviceaccount01.
 * The reason we cannot run our website for AD Authentication with the default App Pool is that such accounts have no authority or privilege to query the AD.
 * Let's assume you have an account named serviceaccount01 in your Active Directory GAL with a password that isn't public knowledge.
 * First off, we will add this user to the Local User Group called IIS_IUSRS.
