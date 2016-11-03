@@ -1,5 +1,6 @@
 # ADAuthentication
-Simple HTTPS Web Service to authenticate users against the AD via post - usage: name=username_or_emailaddress&password=yourpasswordinAD
+Simple HTTPS Web Service to authenticate users against the AD via post.
+Usage: <b>name=username_or_emailaddress&password=yourpasswordinAD</b> to be dispatched via POST over HTTPS.
 
 * You have a plain Windows Server 2012 R2 Standard in your corporate network (internal) that you want to use for AD Authentication for any of your applications installed inside your network.
 
