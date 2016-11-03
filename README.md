@@ -36,7 +36,7 @@ Install Microsoft Visual Studio 2015 Community Edition with all the default comp
 # Creating the project
 
 * Create a folder C:\services
-* Create a folder: C:\services\ADAuth
+* Create a folder: C:\services\ADAuthentication
 * Launch Visual Studio Community 2015
 * Click on New Project...
 * The New Project box that opens out, on the left pane - expand Templates > Visual C# > Windows > Web, and choose ASP.NET Web Application
