@@ -50,8 +50,8 @@ Install Microsoft Visual Studio 2015 Community Edition with all the default comp
 * Uncheck the Microsoft Azure: Host in the cloud option. We are doing everything local here.
 * Leave all the other options unchecked.
 * Click on OK
-* Microsoft Visual Studio creates the ADAuth project and presents you with an empty Developer Environment Window.
-* Right click on the ADAuth project under the ADAuth Solution in the right Solution Explorer pane, and choose Add > New Item
+* Microsoft Visual Studio creates the ADAuthentication project and presents you with an empty Developer Environment Window.
+* Right click on the ADAuthentication project under the ADAuthentication Solution in the right Solution Explorer pane, and choose Add > New Item
 * In the New Item popup applet window, verify that you are presented with Installed > Visual C# > Web, and choose Web Form, the fourth option from the top
 * Name your new page Default.aspx
 * Click on Add.
